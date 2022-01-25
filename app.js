@@ -12,7 +12,7 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUp');
-const joinRouter = require('./routes/signUp')
+const joinRouter = require('./routes/join')
 
 //MongoDB
 const mongoDb = process.env.MONGO_STRING;
