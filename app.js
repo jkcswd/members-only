@@ -12,6 +12,7 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUp');
+const joinRouter = require('./routes/signUp')
 
 //MongoDB
 const mongoDb = process.env.MONGO_STRING;
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
+app.use('/join', joinRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
