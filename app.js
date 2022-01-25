@@ -5,6 +5,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose')
+const passport = require("passport");
+require('./config/passport.js')(passport);
 
 const indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUp');
@@ -23,6 +26,8 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
