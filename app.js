@@ -12,7 +12,8 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUp');
-const joinRouter = require('./routes/join')
+const joinRouter = require('./routes/join');
+const messageRouter = require('./routes/message');
 
 //MongoDB
 const mongoDb = process.env.MONGO_STRING;
@@ -34,7 +35,8 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req, res, next) => { // To access user as variable without passing into controllers for views.
+app.use((req, res, next) => {
+   // To access user as variable without passing into controllers for views.
   res.locals.currentUser = req.user;
   next();
 });
@@ -42,6 +44,7 @@ app.use((req, res, next) => { // To access user as variable without passing into
 app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/join', joinRouter);
+app.use('/message', messageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
