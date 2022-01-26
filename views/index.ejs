@@ -2,10 +2,13 @@
 
   <h1>Members Only Club</h1>
   <p>Welcome to the clubhouse</p>
+  <p><a href="/sign-up">Create account</a></p>
+  <p><a href="/join">Join the Club</a></p>
 
   <% if(currentUser) { %>
     <h2>Welcome back <%= currentUser.firstName %></h2>
     <button> <a href="/log-out"> Log Out</a></button>
+    <p><a href="/message-create">Create Message</a></p>
   <% } else { %>
     <h2>login</h2>
     <form action="/login" method="post">
