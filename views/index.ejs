@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Members Only</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Members Only Club</h1>
-    <p>Welcome to the clubhouse</p>
+<%- include('header'); -%>
 
+  <h1>Members Only Club</h1>
+  <p>Welcome to the clubhouse</p>
+
+  <% if(currentUser) { %>
+    <h2>Welcome back <%= currentUser.firstName %></h2>
+    <button> <a href="/log-out"> Log Out</a></button>
+  <% } else { %>
     <h2>login</h2>
     <form action="/login" method="post">
       <label for="username">Username:</label>
@@ -16,5 +15,6 @@
       <input type="password" name="password" id="password">
       <input type="submit">
     </form>
-  </body>
-</html>
+  <% } %>
+
+  <%- include('footer'); -%>
