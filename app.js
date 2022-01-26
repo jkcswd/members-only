@@ -6,6 +6,8 @@ const logger = require('morgan');
 const mongoose = require('mongoose')
 const passport = require("passport");
 const session = require("express-session");
+const compression = require('compression');
+const helmet = require('helmet');
 
 require('./config/passport.js')(passport);
 require('dotenv').config()
@@ -27,6 +29,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(helmet());
+app.use(compression());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(session(
