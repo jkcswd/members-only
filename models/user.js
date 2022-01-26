@@ -8,7 +8,8 @@ const UserSchema = new Schema(
     lastName: {type: String, required: true, maxLength: 100},
     username: {type: String, required: true, maxLength: 100},
     password: {type: String, required: true, minLength:6, maxLength: 100},
-    membershipStatus: {type: Boolean, required: true}
+    membershipStatus: {type: Boolean, required: true},
+    admin: {type: Boolean, required: false}
   }
 );
 
