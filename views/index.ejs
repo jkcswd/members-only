@@ -20,4 +20,32 @@
     </form>
   <% } %>
 
+  <h2>Messages</h2>
+  <% if(currentUser) { %>
+    <% if(currentUser.membershipStatus) { %>
+      <% messages.forEach(message => { %>
+        <li>
+          <h3><%= message.title %></h3>
+          <p><%= message.message %></p>
+          <p><%= message.user.fullName %></p>
+          <p><%= message.date %></p>
+        </li>
+      <% }) %>
+    <% }else { %>
+      <% messages.forEach(message => { %>
+        <li>
+          <h3><%= message.title %></h3>
+          <p><%= message.message %></p>
+        </li>
+      <% }) %>
+    <% } %>
+  <% } else { %>
+    <% messages.forEach(message => { %>
+      <li>
+        <h3><%= message.title %></h3>
+        <p><%= message.message %></p>
+      </li>
+    <% }) %>
+  <% } %>
+  
   <%- include('footer'); -%>
