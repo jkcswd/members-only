@@ -18,4 +18,12 @@ router.get("/log-out", (req, res) => {
   res.redirect("/");
 });
 
+router.get('/:id/delete', (req, res, next) => {
+  Message.findByIdAndRemove(req.params.id, (err) => {
+    if (err) { return next(err); }
+
+    res.redirect('/');
+  });
+})
+
 module.exports = router;
