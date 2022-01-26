@@ -29,7 +29,14 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(session({ secret: "memeber", resave: false, saveUninitialized: true }));
+app.use(session(
+  { 
+    secret: "12431rfasdfasfd1er4##gsjfd£££", //send to env file
+    resave: false,
+    saveUninitialized: true,
+    cookie: { sameSite: 'strict' }
+  }
+));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
