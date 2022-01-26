@@ -8,4 +8,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', passport.authenticate('local', { successRedirect: "/", failureRedirect: "/" }));
 
+router.get("/log-out", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
+
 module.exports = router;
