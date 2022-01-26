@@ -29,6 +29,9 @@
           <p><%= message.message %></p>
           <p><%= message.user.fullName %></p>
           <p><%= message.date %></p>
+          <% if (currentUser.admin) { %>
+            <p><a href="/<%= message.id %>/delete">delete</a></p>
+          <% } %>
         </li>
       <% }) %>
     <% }else { %>
