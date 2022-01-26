@@ -31,10 +31,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(session(
   { 
-    secret: "12431rfasdfasfd1er4##gsjfd£££", //send to env file
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { sameSite: 'strict' }
+    cookie: { sameSite: 'strict'}
   }
 ));
 app.use(passport.initialize());
